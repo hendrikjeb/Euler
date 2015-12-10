@@ -28,24 +28,34 @@ start = time()
 
 
 
-h = 0
-z = 0
+maxm = 0
+x = 0
+dhk = 0
+vorige_dhk = 1
 
-while z < 200:
+while maxm <= 190:
 	# maak het volgende driehoeksgetal
-	h += 1
-	i = int((float(h)/2 + 0.5) * h)
+	x += 1
+	dhk += x
 
 	# test door hoeveel getallen je ieder driehoeksgetal kan delen
-	x = 1
-	for j in range(0, i/2):
-		if i % (i/2 - j) == 0:
-		#	print i/2 - j,
-			x += 1
-	if x > z:
-		z = x
-		print i, z
+	teller = 0
+	for i in range(1, dhk):
+		i = float(i)
+		if dhk/i <= i:
+			if dhk/i == i:
+				teller += 1
+			break
+		
+		if dhk % i == 0:
+			teller += 2
 
+	if teller > maxm:
+		maxm = teller
+		print dhk, maxm, x
 
 
 print '\nTijd: ', time() - start
+# Tijd was: 3698.87299991
+# Dus 1u 1min 38s
+# Uitkomst: 76576500 (met 576 getallen) dit is het 12375e driehoeksgetal
