@@ -28,4 +28,22 @@ start = time()
 
 
 
-print 'Tijd: ', time() - start
+# maak een lijstje met driehoeksgetallen
+driehoek = []
+for x in range(1, 101):
+	driehoek.append(int((float(x)/2 + 0.5) * x))
+
+# testen door hoeveel getallen je ieder driehoeksgetal kan delen
+z = 0
+for i in driehoek:
+	x = 1
+	#print i,
+	for j in range(0, i/2):
+		if i % (i/2 - j) == 0:
+		#	print i/2 - j,
+			x += 1
+	if x > z:
+		z = x
+		print i, z
+
+print '\nTijd: ', time() - start
