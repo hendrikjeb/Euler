@@ -28,16 +28,16 @@ start = time()
 
 
 
-# maak een lijstje met driehoeksgetallen
-driehoek = []
-for x in range(1, 101):
-	driehoek.append(int((float(x)/2 + 0.5) * x))
-
-# testen door hoeveel getallen je ieder driehoeksgetal kan delen
+h = 0
 z = 0
-for i in driehoek:
+
+while z < 200:
+	# maak het volgende driehoeksgetal
+	h += 1
+	i = int((float(h)/2 + 0.5) * h)
+
+	# test door hoeveel getallen je ieder driehoeksgetal kan delen
 	x = 1
-	#print i,
 	for j in range(0, i/2):
 		if i % (i/2 - j) == 0:
 		#	print i/2 - j,
@@ -45,5 +45,7 @@ for i in driehoek:
 	if x > z:
 		z = x
 		print i, z
+
+
 
 print '\nTijd: ', time() - start
