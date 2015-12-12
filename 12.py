@@ -42,16 +42,15 @@ while maxm <= 501:
 	
 	# bereken het laagste getal dat je wil testen. Begin bij x omdat de 
 	# wortel van x kwadraat (x dus) altijd hoger is dan de wortel van x driehoek
-	y = float(x)
-	while dhk/y < y:
+	y = x
+	while dhk < y*y:
 		y -= 1
 
 	for i in range(1, int(y + 1)):
-		i = float(i)
-		if dhk/i == i:
-			teller += 1
-		elif dhk % i == 0:
+		if dhk % i == 0:
 			teller += 2
+			if i*i == dhk:
+				teller -= 1
 
 	if teller > maxm:
 		maxm = teller
@@ -59,5 +58,4 @@ while maxm <= 501:
 
 
 print '\nTijd: ', time() - start
-# Tijd was: Tijd:  37.486000061
-# Uitkomst: 76576500 (met 576 getallen) dit is het 12375e driehoeksgetal
+# Tijd: 10.0940001011
