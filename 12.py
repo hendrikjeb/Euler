@@ -31,23 +31,26 @@ start = time()
 maxm = 0
 x = 0
 dhk = 0
-vorige_dhk = 1
 
-while maxm <= 190:
+while maxm <= 501:
 	# maak het volgende driehoeksgetal
 	x += 1
 	dhk += x
 
 	# test door hoeveel getallen je ieder driehoeksgetal kan delen
 	teller = 0
-	for i in range(1, dhk):
+	
+	# bereken het laagste getal dat je wil testen. Begin bij x omdat de 
+	# wortel van x kwadraat (x dus) altijd hoger is dan de wortel van x driehoek
+	y = float(x)
+	while dhk/y < y:
+		y -= 1
+
+	for i in range(1, int(y + 1)):
 		i = float(i)
-		if dhk/i <= i:
-			if dhk/i == i:
-				teller += 1
-			break
-		
-		if dhk % i == 0:
+		if dhk/i == i:
+			teller += 1
+		elif dhk % i == 0:
 			teller += 2
 
 	if teller > maxm:
@@ -56,6 +59,5 @@ while maxm <= 190:
 
 
 print '\nTijd: ', time() - start
-# Tijd was: 3698.87299991
-# Dus 1u 1min 38s
+# Tijd was: Tijd:  37.486000061
 # Uitkomst: 76576500 (met 576 getallen) dit is het 12375e driehoeksgetal
