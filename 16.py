@@ -10,6 +10,11 @@ What is the sum of the digits of the number 2^1000?
 from time import time
 start = time()
 
+som = 0
 
+for l in str(2**1000)[:]:
+	som += int(l)
+
+print som
 
 print 'Tijd: ', time() - start
