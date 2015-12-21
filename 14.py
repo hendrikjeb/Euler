@@ -20,12 +20,11 @@ NOTE: Once the chain starts the terms are allowed to go above one million.
 # Tijd:  3.09
 
 from time import time
-start = time()
+startdetijd = time()
 
-lijst = [0, 1] + 10000000 * [0]
+bovengrens = 7500000
+lijst = [0, 1] + bovengrens * [0]
 maxm = [1, 1]
-
-bugfix = time() # Voorals bij start alleen 999999 wordt opgeschreven...
 
 for start in range(2, 1000000):
 	# controleer of de lengte van de Collatz-reeks voor een getal al is gevonden
@@ -38,13 +37,12 @@ for start in range(2, 1000000):
 		# Vervang daarbij de getallen die buiten de index van de grote lijst 
 		# vallen door 0.
 			while True:
-				try:
-					if lijst[x] != 0:
-						break
-					else:
-						tijdelijk.append(x)
-				except IndexError:
+				if x >= bovengrens:
 					tijdelijk.append(0)
+				elif lijst[x] != 0:
+						break
+				else:
+					tijdelijk.append(x)	
 				
 				if x % 2 == 0:
 					x /= 2
@@ -65,5 +63,4 @@ for start in range(2, 1000000):
 			maxm = [start, lijst[start]]
 			print "%d => %d" % (maxm[0], maxm[1])
 
-print 'Tijd: ', time() - start
-print 'Tijd: ', time() - bugfix
+print 'Tijd: ', time() - startdetijd
