@@ -53,34 +53,27 @@ for x in range(0, 10):
 	if x != 0:
 		# maak voor de getallen 1 - 9 het eerste honderdtal
 		teller += len(getallen[x]) + 7
-		print getallen[x], "hundred",
-		print len(getallen[x]) + 7,
-		print teller
+		# print getallen[x], "hundred"
 
 		# voorbereidingen om later bijv "one hundred and" voor een getal te 
 		# kunnen zetten
 		honderdtal = "{} {} {} ".format(getallen[x], "hundred", "and")
-		lengte_honderdtal = len(getallen[x]) + 10
+		lengte_honderdtal = len(getallen[x] + "hundred" + "and")
 	else:
 		# voor de getallen onder de honderd
 		honderdtal = ""
 		lengte_honderdtal = 0
 
 	for g in range(1, 100):
-		if g > 19 and g < 100 and g % 10 != 0:
-			teller += len(getallen[g - (g % 10)]) + len(getallen[g % 10]) + lengte_honderdtal
-			print honderdtal + getallen[g - (g % 10)] + "-" + getallen[g % 10],
-			print len(getallen[g - (g % 10)]) + len(getallen[g % 10]) + lengte_honderdtal,
-			print teller
-		else:
+		if g < 20 or g % 10 == 0:
 			teller += len(getallen[g]) + lengte_honderdtal
-			print honderdtal + getallen[g],
-			print len(getallen[g]) + lengte_honderdtal,
-			print teller
+			# print honderdtal + getallen[g]
+		else:
+			teller += len(getallen[g - (g % 10)] + getallen[g % 10]) + lengte_honderdtal
+			# print honderdtal + getallen[g - (g % 10)] + "-" + getallen[g % 10]
 
-teller += len("one") + len("thousand")
-print "one", "thousand",
-print len("one") + len("thousand"),
+teller += len("one" + "thousand")
+# print "one", "thousand"
 print teller
 
 print 'Tijd: ', time() - start
