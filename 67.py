@@ -19,12 +19,13 @@ a 15K text file containing a triangle with one-hundred rows.
 from time import time
 start = time()
 
-oefendriehoek = map(lambda x: map(lambda y: int(y), x.split(" ")), """\
-3
-7 4
-2 4 6
-8 5 9 3\
-""".split("\n"))
+driehoek = []
+
+with open("67_triangle.txt") as f:
+	for x in xrange(100):
+		driehoek.append(f.readline())
+
+driehoek = map(lambda x: map(lambda y: int(y), x.split(" ")), driehoek)
 
 # print de driehoek
 # for rij in driehoek:
