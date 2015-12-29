@@ -13,6 +13,6 @@ Find the sum of the digits in the number 100!
 from time import time
 start = time()
 
-
+print sum(map(int, str(reduce(lambda x, y: x * y, range(2, 100)))[:]))
 
 print 'Tijd: ', time() - start
