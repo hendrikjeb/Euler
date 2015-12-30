@@ -17,6 +17,27 @@ Evaluate the sum of all the amicable numbers under 10000.
 from time import time
 start = time()
 
+lijst = 10001 * [0]
+vrienden = []
 
+wortel = 1
+for getal in range(1, 10001):
+	if getal == (wortel + 1) * (wortel + 1):
+		wortel += 1
+
+	som = 1
+	for d in range(2, wortel + 1):
+		if getal % d == 0:
+			som += d + getal/d
+			if d * d == getal:
+				som -= d
+	lijst[getal] = som
+
+	if som < getal:
+		if lijst[som] == getal:
+			vrienden.append(lijst[som] + lijst[getal])
+			print ":)", lijst[som], lijst[getal]
+
+print sum(vrienden)
 
 print 'Tijd: ', time() - start
