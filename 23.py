@@ -24,6 +24,46 @@ two abundant numbers.
 from time import time
 start = time()
 
+maxm = 28123 + 1
+# maxm = 1000
 
+resultaten = []
+lijst = []
+
+wortel = 3
+for getal in range(12, maxm):
+	if getal == (wortel + 1) * (wortel + 1):
+		wortel += 1
+
+	som = 1
+	for d in range(2, wortel + 1):
+		if getal % d == 0:
+			som += d + getal/d
+			if d * d == getal:
+				som -= d
+
+	if som > getal:
+		lijst.append(getal)
+
+for x in range(1, maxm):
+	y = 0
+	while True:
+		try:
+			if x - lijst[y] in lijst:
+				# print x
+				break
+			else:
+				if x > lijst[y]:
+					y += 1
+				else:
+					resultaten.append(x)
+					# print "!", x
+					break
+		except IndexError: 
+			resultaten.append(x)
+			print "(%d)" % x
+			break
+
+print sum(resultaten)
 
 print 'Tijd: ', time() - start
