@@ -15,8 +15,25 @@ What is the total of all the name scores in the file?
 """
 
 from time import time
+from csv import reader
+
 start = time()
 
+resultaat = 0
 
+with open("22_names.txt") as names:
+	csvreader = reader(names, delimiter=',', quotechar='"')
+
+	for namen in csvreader:
+		namen = sorted(namen)
+
+		for x in xrange(len(namen)):
+			som = 0
+			for letter in namen[x][:]:
+				som += ord(letter) - 64
+
+			resultaat += (x + 1) * som
+
+print resultaat
 
 print 'Tijd: ', time() - start
