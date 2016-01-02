@@ -28,7 +28,7 @@ maxm = 28123 + 1
 # maxm = 1000
 
 resultaten = []
-lijst = []
+lijst = [0] * maxm
 
 wortel = 3
 for getal in range(12, maxm):
@@ -43,27 +43,28 @@ for getal in range(12, maxm):
 				som -= d
 
 	if som > getal:
-		lijst.append(getal)
+		lijst[getal] = getal
+
+uitbundig = list(set(lijst))[1:]
 
 for x in range(1, maxm):
 	y = 0
-	while True:
-		try:
-			if x - lijst[y] in lijst:
-				# print x
+	try:
+		while x > uitbundig[y]:
+			if lijst[x - uitbundig[y]] != 0:
+				# print x, uitbundig[y], x - uitbundig[y]
 				break
 			else:
-				if x > lijst[y]:
-					y += 1
-				else:
-					resultaten.append(x)
-					# print "!", x
-					break
-		except IndexError: 
+				y += 1
+		else:
 			resultaten.append(x)
-			print "(%d)" % x
-			break
+			# print "!", x
+	except IndexError: 
+		resultaten.append(x)
+		print "(%d)" % x
+		break
 
 print sum(resultaten)
 
 print 'Tijd: ', time() - start
+# Tijd:  1.65 s
