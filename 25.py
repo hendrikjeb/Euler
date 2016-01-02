@@ -29,5 +29,14 @@ What is the index of the first term in the Fibonacci sequence to contain 1000 di
 from time import time
 start = time()
 
+a = 0
+b = 1
+f = 0
+
+while a < 10**999:
+	f += 1
+	a, b = b, a + b
+
+print f
 
 print 'Tijd: ', time() - start
