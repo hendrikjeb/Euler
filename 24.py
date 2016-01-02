@@ -17,5 +17,27 @@ What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5,
 from time import time
 start = time()
 
+permutatie = ""
+aant = 10 # aantal getallen in de permutatie 
+getallen = range(0, aant) # de getallen in de permutatie
+
+# maak een lijstje met voor het aantal getallen de bijbehorende faculteiten
+f = map(lambda x: reduce(lambda x, y: x * y, range(1, x + 2)), xrange(aant))
+f.insert(0, 1)
+
+g = 1000000 # het nde getal waarvan je wil weten hoe zijn permutatie eruit ziet
+
+for x in xrange(aant):
+	g %= f[aant]
+	aant -= 1
+	
+	permutatie += str(getallen[(g - 1) / f[aant]])
+	
+	for y in xrange(len(getallen)):
+		if getallen[y] == getallen[(g - 1) / f[aant]]:
+			getallen.pop(y)
+			break
+	
+print permutatie
 
 print 'Tijd: ', time() - start
