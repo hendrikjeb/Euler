@@ -25,5 +25,28 @@ in its decimal fraction part.
 from time import time
 start = time()
 
+maxm = 0
+
+for d in range(2, 1000):
+	modulos = []
+	# delers = "0,"
+	n = 1
+	
+	while True:
+		n = (n % d) * 10
+		if n == 0:
+			break
+		elif n % d in modulos:
+			# while str(n / d) not in delers[:]:
+			# 	delers += str(n / d)
+			# print "1/{}".format(d), delers, modulos.index(n % d)
+			if  len(modulos) > maxm:
+				maxm, d_maxm = len(modulos), d
+			break
+		else:
+			modulos.append(n % d)
+			# delers += str(n / d)
+
+print "max: 1/%d (%d)" % (d_maxm, maxm)
 
 print 'Tijd: ', time() - start
