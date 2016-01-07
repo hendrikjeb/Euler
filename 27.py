@@ -29,5 +29,27 @@ n = 0.
 from time import time
 start = time()
 
+# Maak een lijst met priemgetallen
+p = 126479
+priem = range(0, p)
+priem[1] = 0
+
+for i in range(2, p):
+	if priem[i] != 0:
+		j = i*i
+		
+		while j < p:
+			priem[j] = 0
+			j += i
+
+# Euler repro
+for n in range(0, 40):
+	print n, n**2 + n + 41, priem[n**2 + n + 41]
+
+print ""
+
+# Euler ++ repro
+for n in range(0, 80):
+	print n, n**2 - 79 * n + 1601, priem[n**2 - 79 * n + 1601]
 
 print 'Tijd: ', time() - start
