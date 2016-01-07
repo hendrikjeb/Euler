@@ -21,5 +21,14 @@ formed in the same way?
 from time import time
 start = time()
 
+# De som van de hoeken van een vierkant met lengte n is steeds:
+# (n^2) + (n^2 - (n - 1)) + (n^2 - 2(n - 1)) + (n^2 - 3(n - 1)) =
+# (n^2) + (n^2 - n + 1) + (n^2 - 2n + 2) + (n^2 - 3n + 3) =
+# 4n^2 - 6n + 6
+
+# Tel de som van de hoeken van alle oneven vierkanten tot 1002 bij elkaar op;
+# Tel daar de middelste 1 bij op.
+
+print sum(map(lambda n: 4 * n**2 - 6*n + 6, range(3, 1002, 2))) + 1
 
 print 'Tijd: ', time() - start
