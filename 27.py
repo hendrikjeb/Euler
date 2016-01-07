@@ -42,14 +42,21 @@ for i in range(2, p):
 			priem[j] = 0
 			j += i
 
-# Euler repro
-for n in range(0, 40):
-	print n, n**2 + n + 41, priem[n**2 + n + 41]
+maximum = 0
+a = -1000
 
-print ""
-
-# Euler ++ repro
-for n in range(0, 80):
-	print n, n**2 - 79 * n + 1601, priem[n**2 - 79 * n + 1601]
+while a < 1000:
+	b = -1000
+	while b < 1000:
+		n = 0
+		while priem[abs(n**2 + a * n + b)] != 0:
+			n += 1
+		
+		if n > maximum: 
+			maximum = n
+			print a, b, n, a * b
+			
+		b += 1
+	a += 1
 
 print 'Tijd: ', time() - start
