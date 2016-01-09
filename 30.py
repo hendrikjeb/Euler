@@ -20,5 +20,17 @@ of their digits.
 from time import time
 start = time()
 
+bovengrens = 6 * 9 ** 5
+
+som = 0
+for x in range(10, bovengrens):
+	z = 0
+	for l in str(x)[:]:
+		z += int(l) ** 5
+	if x == z:
+		som += z
+		# print z, x
+
+print som
 
 print 'Tijd: ', time() - start
