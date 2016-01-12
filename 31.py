@@ -17,5 +17,25 @@ How many different ways can £2 be made using any number of coins?
 from time import time
 start = time()
 
+munten = [200, 100, 50, 10, 5, 2, 1]
+lijst = [[200]]
+
+x = 0
+while True:
+	try:
+		x += 1
+		lijst.append([])
+		_200 = 200
+		y = 0
+		while _200 > 0:
+			if _200 < munten[y] or munten[y] == lijst[x - 1][-1]:
+				y += 1
+			else:
+				lijst[x].append(munten[y])
+				_200 -= munten[y]
+				print munten[y]
+	except IndexError:
+		print "!"
+		break
 
 print 'Tijd: ', time() - start
