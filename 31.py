@@ -17,43 +17,29 @@ How many different ways can £2 be made using any number of coins?
 from time import time
 start = time()
 
-t2 = 1
-max100, t100 = 200, 0
+teller = 1
+max100 = 200
 
 while max100 >= 0:
-	max50, t50 = max100, 0
+	max50 = max100
+	max100 -= 100
 
 	while max50 >= 0:
-		max20, t20 = max50, 0
+		max20 = max50
+		max50 -= 50
 
 		while max20 >= 0:
-			max10, t10 = max20, 0
+			max10 = max20
+			max20 -= 20
 
 			while max10 >= 0:
-				max5, t5 = max10, 0
+				max5 = max10
+				max10 -= 10	
 
 				while max5 >= 0:
-					max2 = max5
-					
-					while max2 >= 0:
-						max2 -= 2
-						t2 += 1
-					
+					teller += max5/2 + 1
 					max5 -= 5
-					t5 += 1
-				
-				max10 -= 10
-				t10 += 1		
-
-			max20 -= 20
-			t20 += 1
-		
-		max50 -= 50
-		t50 += 1
-
-	max100 -= 100
-	t100 += 1
-
-print t2
+					
+print teller
 
 print 'Tijd: ', time() - start
